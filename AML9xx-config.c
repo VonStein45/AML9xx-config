@@ -113,6 +113,29 @@ typedef struct {
 
 DIR_LIST global_dir_list;  /* Must NOT be static, since that increases executable size with the size of the allocated memory */
 
+void bubblesort_global_dir_list() {
+    char temp;
+    int dirty = 1;
+    
+    while (dirty) {
+        dirty = 0;
+        for (int i = 0; i < global_dir_list.n - 1; i++) {
+            /* Compare filenames */
+            if (strcmp(global_dir_list.fname[i], global_dir_list.fname[i+1]) > 0) {
+                dirty = 1;
+                
+                /* three-way swap byte for byte */
+                for (int k = 0; k < MAX_FNLEN; k++) {
+                    temp = global_dir_list.fname[i][k];
+                    global_dir_list.fname[i][k] = global_dir_list.fname[i+1][k];
+                    global_dir_list.fname[i+1][k] = temp;
+                }
+            }
+        }
+    }
+}
+
+
 void do_uboot() {
     struct dirent *e;
     int i, choice;
@@ -133,6 +156,8 @@ void do_uboot() {
         }
     }
     closedir(d);
+
+    bubblesort_global_dir_list();
 
     if (global_dir_list.n > 0) {
         choice = ur_choice(0, global_dir_list.n, "Choice (0-%d)...(0=Cancel and return): ", global_dir_list.n);
@@ -175,6 +200,8 @@ void do_dtb() {
         }
     }
     closedir(d);
+
+    bubblesort_global_dir_list();
 
     if (global_dir_list.n > 0) {
         choice = ur_choice(0, global_dir_list.n, "Choice (0-%d)...(0=Cancel and return): ", global_dir_list.n);

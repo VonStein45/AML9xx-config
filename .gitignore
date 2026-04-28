@@ -1,3 +1,7 @@
+# Windows artifacts
+System\ Volume\ Information/
+$RECYCLE.BIN/
+
 # Prerequisites
 *.d
 
