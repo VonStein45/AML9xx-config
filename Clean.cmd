@@ -12,6 +12,7 @@ cd QuickTest
 del AML9xx-config-win-x86.exe
 del .\extlinux\extlinux.conf
 del .\extlinux\extlinux.conf.bak
+del u-boot.ext
 
 @popd
 @pause
