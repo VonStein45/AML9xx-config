@@ -15,6 +15,18 @@
 @echo Building ARM64 (Static musl)...
 @zig build-exe %SRC% -target aarch64-linux-musl %OPTS% --name AML9xx-config-arm64
 
+@echo.
+@echo NB: Absolute alpha-test builds of the two flavours of MAC OS binaries..
+@echo     These are not even tested to run, and not LIPO packed and/or signed. I.e. they are ONLY for test purposes.
+@echo Additional note: -fstrip might cause MAC to fail if binary is not signed.
+@echo.
+
+@echo Building ARM64 Apple Silicon (M1-M4)...
+@zig build-exe %SRC% -target aarch64-macos %OPTS% --name AML9xx-config-macos-arm64
+
+@echo Building Intel Mac...
+@zig build-exe %SRC% -target x86_64-macos %OPTS% --name AML9xx-config-macos-x86_64
+
 @echo Done!
 @popd
 @pause

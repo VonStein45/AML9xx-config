@@ -8,6 +8,9 @@ del AML9xx-config-arm64
 del AML9xx-config-linux-x64
 del AML9xx-config-win-x86.exe
 
+del AML9xx-config-macos-arm64
+del AML9xx-config-macos-x86_64
+
 cd QuickTest
 del AML9xx-config-win-x86.exe
 del .\extlinux\extlinux.conf
